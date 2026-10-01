@@ -1,16 +1,88 @@
-body, select, button, input{
-  background-color: rgb(21,21,21);
-  color : rgb(255,255,255);
+html {
+  scroll-behavior: smooth;
 }
 
-path.domain,
-.tick line {
-  stroke: white;
+body, select, button, input{
+  background-color: rgb(13,17,23);
+  color : rgb(255,255,255);
+  padding: 0px;
+  margin: 0px;
+
 }
-.tick text {
-  fill: white;
+
+#persistentHeader{
+	background-color: rgb(26,34,46);
+	border-bottom:1px solid white;
 }
-.strategyParameterLabel {
-	color : white;
+
+#footer{
+	background-color: rgb(26,34,46);
+	border-bottom:1px solid white;
+}
+
+.headerText{
+	font-size: 48px;
+	font-family: "Lucida Console", "Courier New", monospace;
+	padding-left: 15px;
+}
+
+.tileHidden{
+	opacity: 0.25;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	
+}
+
+.tile{
+	border-radius: 15px;
+	background-color: rgb(26,34,46);
+	border:1px solid white;
+	padding: 25px;
+	height: 500px;
+	
+}
+
+table, th, td, tr{
+	
+}
+#mainDiv{
+	width: 100%;
+}
+#tileContainer{
+	padding-top: 25px;
+}
+
+#rightTableHeading{
+	width: 60%;
+}
+
+#leftTableHeading{
+	width: 40%;
+}
+#tileImageContainer{
+	text-align: left;
+	padding-top: 25px;
+	padding-left: 25px;
+}
+
+.tileHeading{
+	text-align: left;
+	width: 250px;
+	height: 0px;
+	background-color: rgb(52,68,92);
+	font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.tileHeadingText{
+	border-radius: 15px;
+	text-align: left;
+	padding: 15px;
+	background-color: rgb(52,68,92);
+}
+
+.tileDescription{
+	padding-top: 50px;
+	text-align: left;
+	font-family: "Lucida Console", "Courier New", monospace;
 }
 

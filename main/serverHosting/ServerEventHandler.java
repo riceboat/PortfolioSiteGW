@@ -1,5 +1,7 @@
 package serverHosting;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,9 +26,22 @@ public class ServerEventHandler implements Runnable {
 	}
 
 	static String readFile(String filePath) {
-		try {
-			return Files.readString(Paths.get(filePath));
-		} catch (IOException e) {
+		if (Files.exists(Paths.get(filePath))) {
+			File file = new File(filePath);
+			StringBuilder fileContents = new StringBuilder((int) file.length());
+
+			try (Scanner scanner = new Scanner(file)) {
+				while (scanner.hasNextLine()) {
+					fileContents.append(scanner.nextLine() + System.lineSeparator());
+				}
+				return fileContents.toString();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				System.out.println("File reading failed?? -> " + filePath);
+				return null;
+			}
+		} else {
+			System.out.println("Could not find " + filePath);
 			return null;
 		}
 	}
