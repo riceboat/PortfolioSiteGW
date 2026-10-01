@@ -1,4 +1,4 @@
-function generateTile(heading, descriptionHTML, id){
+function generateTile(heading, descriptionHTML, id, image){
 	const tileContainer = document.getElementById("tileContainer");
 	const tileImageContainer = document.getElementById("tileImageContainer");
 	
@@ -12,7 +12,7 @@ function generateTile(heading, descriptionHTML, id){
 	
 	const newDivDescriptionText = document.createElement("p");
 	newDivDescriptionText.classList.add("tileDescriptionText");
-	newDivDescriptionText.innerHTML = '<object class="internalHTML" type="text/plain" data='+ descriptionHTML+" ></object>";
+	newDivDescriptionText.innerHTML = '<object class="internalHTML" type="text/html" data='+ descriptionHTML+" ></object>";
 		
 	const newDivDescription = document.createElement("div");
 	newDivDescription.classList.add("tileDescription");
@@ -33,7 +33,7 @@ function generateTile(heading, descriptionHTML, id){
 	const newImageDivGraphic = document.createElement("div");
 	newImageDiv.classList.add("tileHidden");
 	newImageDivGraphic.classList.add("tile");
-	newImageDivGraphic.innerHTML = "<img src='../images/ducks.png'>";
+	newImageDivGraphic.innerHTML = "<img class = 'tileImage' src="+image+">";
 	newImageDiv.appendChild(newImageDivGraphic);
 	newImageDiv.classList.add("image" + id);
 	tileImageContainer.appendChild(newImageDiv);
@@ -101,11 +101,11 @@ function autoHighlightTile(){
 
 var minTile = 0;
 var maxTile = 0;
-generateTile("PROFESSIONAL PROFILE", "../pages/tile0.html", 0);
-generateTile("Overview", "../pages/tile0.html", 1);
-generateTile("Overview", "../pages/tile0.html", 2);
-generateTile("Overview", "../pages/tile0.html", 3);
-generateTile("Overview", "../pages/tile0.html", 4);
+generateTile("Professional Profile", "../pages/tile0.html", 0, "../images/headshot.png");
+generateTile("Master's Dissertation", "../pages/tile1.html", 1, "../images/graph.png");
+generateTile("Financial Software", "../pages/tile2.html", 2, "../images/graph2.png");
+generateTile("Overview", "../pages/tile3.html", 3);
+generateTile("Overview", "../pages/tile4.html", 4);
 var currentTileNumber = 0;
 goToTile(0);
 document.documentElement.scrollTop = 0;

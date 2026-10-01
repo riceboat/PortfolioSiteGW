@@ -162,3 +162,18 @@ table, th, td, tr{
 	height:25px;
 	padding:15px;
 }
+
+#contactContainer{
+	padding:15px;
+	list-style: none;
+}
+
+.tileImage{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:auto;
+	margin-bottom:auto;
+	width: 100%;
+	border-radius: 15px;
+}
