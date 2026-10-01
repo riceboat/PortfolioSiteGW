@@ -29,7 +29,6 @@ public class ServerEventHandler implements Runnable {
 		if (Files.exists(Paths.get(filePath))) {
 			File file = new File(filePath);
 			StringBuilder fileContents = new StringBuilder((int) file.length());
-
 			try (Scanner scanner = new Scanner(file)) {
 				while (scanner.hasNextLine()) {
 					fileContents.append(scanner.nextLine() + System.lineSeparator());

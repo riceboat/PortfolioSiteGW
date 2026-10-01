@@ -33,7 +33,7 @@ function generateTile(heading, description, id){
 	const newImageDivGraphic = document.createElement("div");
 	newImageDiv.classList.add("tileHidden");
 	newImageDivGraphic.classList.add("tile");
-	newImageDivGraphic.innerHTML = "<img src='images/ducks.png'>";
+	//newImageDivGraphic.innerHTML = "<img src='images/ducks.png'>";
 	newImageDiv.appendChild(newImageDivGraphic);
 	newImageDiv.classList.add("image" + id);
 	tileImageContainer.appendChild(newImageDiv);
