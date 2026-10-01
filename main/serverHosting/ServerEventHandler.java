@@ -1,7 +1,6 @@
 package serverHosting;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,22 +24,22 @@ public class ServerEventHandler implements Runnable {
 		this.httpExchange = httpExchange;
 	}
 
-	static String readFile(String filePath) {
+	static byte[] readFile(String filePath) {
 		if (Files.exists(Paths.get(filePath))) {
 			File file = new File(filePath);
-			StringBuilder fileContents = new StringBuilder((int) file.length());
-			try (Scanner scanner = new Scanner(file)) {
-				while (scanner.hasNextLine()) {
-					fileContents.append(scanner.nextLine() + System.lineSeparator());
-				}
-				return fileContents.toString();
-			} catch (FileNotFoundException e) {
+			byte[] fileContent;
+			try {
+				fileContent = Files.readAllBytes(file.toPath());
+				return fileContent;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
-				System.out.println("File reading failed?? -> " + filePath);
+				System.err.println("Could not read file bytes: " + filePath);
 				return null;
 			}
+
 		} else {
-			System.out.println("Could not find " + filePath);
+			System.err.println("Could not find " + filePath);
 			return null;
 		}
 	}
@@ -61,9 +60,9 @@ public class ServerEventHandler implements Runnable {
 		return valJsonObject.toString();
 	}
 
-	String responseHandler(String uriString, String requestString) {
+	byte[] responseHandler(String uriString, String requestString) {
 		double startTime = System.nanoTime();
-		String result = null;
+		byte[] result = null;
 		LinkedHashMap<String, String> requestStringHashMap = new LinkedHashMap<String, String>();
 		String[] splitParamStrings = requestString.split("&");
 		if (splitParamStrings.length > 1) {
@@ -75,9 +74,9 @@ public class ServerEventHandler implements Runnable {
 		if (uriString.equals("")) {
 			return readFile("pages/index.html");
 		} else if (uriString.equals("getDate")) {
-			result = getDate();
+			result = getDate().getBytes();
 		} else if (uriString.equals("multiply")) {
-			result = multiply(requestStringHashMap);
+			result = multiply(requestStringHashMap).getBytes();
 		} else {
 			return readFile(uriString);
 		}
@@ -95,7 +94,7 @@ public class ServerEventHandler implements Runnable {
 	@Override
 	public void run() {
 		String uriString = httpExchange.getRequestURI().toString().substring(1);
-		String response = null;
+		byte[] response = null;
 		InputStream inputStream = httpExchange.getRequestBody();
 		Scanner s = new Scanner(inputStream).useDelimiter("\\A");
 		String requestString = s.hasNext() ? s.next() : "";
@@ -105,17 +104,17 @@ public class ServerEventHandler implements Runnable {
 				response = responseHandler(uriString, requestString);
 				if (response == null) {
 					response = readFile("pages/404.html");
-					httpExchange.sendResponseHeaders(404, response.length());
+					httpExchange.sendResponseHeaders(404, response.length);
 				} else {
-					httpExchange.sendResponseHeaders(200, response.length());
+					httpExchange.sendResponseHeaders(200, response.length);
 				}
 			} else if (httpExchange.getRequestMethod().equals("POST")) {
 				response = responseHandler(uriString, requestString);
-				httpExchange.sendResponseHeaders(200, response.length());
+				httpExchange.sendResponseHeaders(200, response.length);
 			}
 
 			OutputStream os = httpExchange.getResponseBody();
-			os.write(response.getBytes());
+			os.write(response);
 			os.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -104,3 +104,22 @@ ul{
 	padding-bottom: 450px;
 	margin: 0;
 }
+
+#flipVert {
+    -webkit-transform: scale(-1, -1);
+    -moz-transform: scale(-1, -1);
+    -o-transform: scale(-1, -1);
+    transform: scale(-1, -1);
+}
+
+.controlIcon{
+	width: 50px;
+	height: 75px;
+	filter: invert(1);
+	user-select: none;
+}
+
+.controlButton{
+	border: none;
+	user-select: none;
+}
