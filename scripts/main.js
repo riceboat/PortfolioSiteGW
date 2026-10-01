@@ -37,7 +37,7 @@ function generateTile(heading, description, id){
 	newImageDiv.appendChild(newImageDivGraphic);
 	newImageDiv.classList.add("image" + id);
 	tileImageContainer.appendChild(newImageDiv);
-	
+	maxTile+=1;
 }
 
 function goToTile(newTileNumber){
@@ -78,6 +78,18 @@ function goToTile(newTileNumber){
 	
 }
 
+function listUp(){
+	if (currentTileNumber > 0){
+		goToTile(currentTileNumber - 1);
+	}
+}
+function listDown(){
+	if (currentTileNumber < 4){
+		goToTile(currentTileNumber + 1);
+	}
+}
+var minTile = 0;
+var maxTile = 0;
 generateTile("Overview", "Lorem ipsum dolor sit amet", 0);
 generateTile("Overview", "Lorem ipsum dolor sit amet", 1);
 generateTile("Overview", "Lorem ipsum dolor sit amet", 2);

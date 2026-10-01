@@ -86,3 +86,21 @@ table, th, td, tr{
 	font-family: "Lucida Console", "Courier New", monospace;
 }
 
+#controlsContainer {
+	top: 0;
+	bottom: 0;
+	position: sticky;
+	height: 100%;
+}
+
+#button{
+	height: 1000px;
+}
+
+ul{
+	list-style-type: none;
+	padding: 0;
+	padding-top: 450px;
+	padding-bottom: 450px;
+	margin: 0;
+}
