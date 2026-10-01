@@ -1,4 +1,4 @@
-function generateTile(heading, description, id){
+function generateTile(heading, descriptionHTML, id){
 	const tileContainer = document.getElementById("tileContainer");
 	const tileImageContainer = document.getElementById("tileImageContainer");
 	
@@ -12,7 +12,7 @@ function generateTile(heading, description, id){
 	
 	const newDivDescriptionText = document.createElement("p");
 	newDivDescriptionText.classList.add("tileDescriptionText");
-	newDivDescriptionText.innerHTML = description;
+	newDivDescriptionText.innerHTML = '<object class="internalHTML" type="text/plain" data='+ descriptionHTML+" ></object>";
 		
 	const newDivDescription = document.createElement("div");
 	newDivDescription.classList.add("tileDescription");
@@ -101,11 +101,11 @@ function autoHighlightTile(){
 
 var minTile = 0;
 var maxTile = 0;
-generateTile("Overview", "Lorem ipsum dolor sit amet", 0);
-generateTile("Overview", "Lorem ipsum dolor sit amet", 1);
-generateTile("Overview", "Lorem ipsum dolor sit amet", 2);
-generateTile("Overview", "Lorem ipsum dolor sit amet", 3);
-generateTile("Overview", "Lorem ipsum dolor sit amet", 4);
+generateTile("PROFESSIONAL PROFILE", "../pages/tile0.html", 0);
+generateTile("Overview", "../pages/tile0.html", 1);
+generateTile("Overview", "../pages/tile0.html", 2);
+generateTile("Overview", "../pages/tile0.html", 3);
+generateTile("Overview", "../pages/tile0.html", 4);
 var currentTileNumber = 0;
 goToTile(0);
 document.documentElement.scrollTop = 0;
