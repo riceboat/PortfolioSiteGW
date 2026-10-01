@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <body>
 	<div id=persistentHeader>
-		<table>
+		<table id="headerTable">
 		<th align="left" class="headerText">Gregor Watt - Portfolio</th>
 		<th align="center"></th>
 		<th align="right">
 			<div id="links">
-				
+				<ul id="linksUL">
+					<li><a href="https://github.com/riceboat"><img class="logoLink" src="images/github.png"></a></li>
+					<li><a href="https://www.linkedin.com/in/gregor-watt-4b0951205"><img class="logoLink" src="images/linkedin.png"></a></li>
+				</ul>
 			</div>
 		</th>
 		</table>
@@ -15,7 +18,7 @@
 		<th id="controlsHeading">
 			<div id="controlsContainer">
 				<div id="controls">
-					<ul>
+					<ul id="controlList">
 						<li><button class="controlButton" onClick="listUp();"><img class="controlIcon" src = "../images/arrowUp.png" aria-hidden="true"></button></li>	
 						<li><button class="controlButton" onClick="listDown();"><img class="controlIcon" id = "flipVert" src = "../images/arrowUp.png" aria-hidden="true"></button></li>	
 					</ul>
